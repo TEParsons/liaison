@@ -1,0 +1,15 @@
+[project]
+name = "liaison"
+version = "0.0.0"
+
+dependencies = [
+    "jsonschema"
+]
+
+[project.optional-dependencies]
+websocket = [
+    "websockets"
+]
+
+[tool.setuptools.package-data]
+"liaison" = ["*.schema.json"]

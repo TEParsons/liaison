@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: liaison
+Version: 0.0.0
+Requires-Dist: jsonschema
+Provides-Extra: websocket
+Requires-Dist: websockets; extra == "websocket"
