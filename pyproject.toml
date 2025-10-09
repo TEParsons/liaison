@@ -12,4 +12,4 @@ websocket = [
 ]
 
 [tool.setuptools.package-data]
-"liaison" = ["*.schema.json"]
+"liaison.companion" = ["*.schema.json"]
