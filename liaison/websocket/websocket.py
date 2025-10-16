@@ -3,6 +3,7 @@ import asyncio
 import websockets
 import json
 import traceback
+import types
 from websockets.sync.client import connect
 from ..base import BaseLiaison
 from ..constants import START_MARKER, STOP_MARKER
@@ -21,6 +22,12 @@ class LiaisonJSONEncoder(json.JSONEncoder):
         except:
             # if there's an error in the getJSON method, continue so we can try regular encoding
             pass
+        # if given a module, construct an import string
+        if isinstance(o, types.ModuleType):
+            return f"python:///{o.__name__}"
+        # if given a class or method, construct an import string
+        if isinstance(o, (type, function)):
+            return f"python:///{o.__module__}:{o.__qualname__}"
 
         # otherwise behave as normal
         try:
