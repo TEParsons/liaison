@@ -26,7 +26,7 @@ class LiaisonJSONEncoder(json.JSONEncoder):
         if isinstance(o, types.ModuleType):
             return f"python:///{o.__name__}"
         # if given a class or method, construct an import string
-        if isinstance(o, (type, function)):
+        if isinstance(o, (type, types.FunctionType)):
             return f"python:///{o.__module__}:{o.__qualname__}"
 
         # otherwise behave as normal
