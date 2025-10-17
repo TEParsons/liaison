@@ -110,8 +110,8 @@ class Companion:
 
         Returns
         -------
-        bool
-            True if object was registered successfully
+        str
+            Name that the object was registered to
         """
         self.namespace[name] = self.call(
             cls,
@@ -119,7 +119,7 @@ class Companion:
             **kwargs
         )
 
-        return True
+        return name
     
     def call(self, fcn, *args, **kwargs):
         """
@@ -158,8 +158,8 @@ class Companion:
         
         Returns
         -------
-        bool
-            True if object was registered successfully
+        str
+            Name that the object was registered to
         """
         # import element from target string
         element = self.resolve_import(target)
@@ -175,7 +175,7 @@ class Companion:
         # store in namespace
         self.namespace[name] = element
         
-        return True
+        return name
     
     def store(self, name, value):
         """
@@ -190,10 +190,12 @@ class Companion:
         
         Returns
         -------
-        bool
-            True if value was stored successfully
+        str
+            Name that the object was registered to
         """
         self.namespace[name] = value
+
+        return name
     
     def ping(self):
         """
